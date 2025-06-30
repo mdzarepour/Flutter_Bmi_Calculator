@@ -2,6 +2,7 @@ import 'package:bmi_calculator/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//TODO get colors from colorcheme -->
 class AppTextTheme {
   AppTextTheme._();
   static TextTheme textTheme = TextTheme(
