@@ -1,17 +1,28 @@
-import 'package:bmi_calculator/core/constants/app_colors.dart';
 import 'package:bmi_calculator/core/constants/app_strings.dart';
+import 'package:bmi_calculator/models/bmi_model.dart';
 import 'package:bmi_calculator/screens/input_screen/components/calculation_button.dart';
 import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
 import 'package:bmi_calculator/screens/input_screen/components/multi_child_input_widget.dart';
 import 'package:bmi_calculator/screens/input_screen/components/single_childe_input_widget.dart';
 import 'package:flutter/material.dart';
 
-class InputPage extends StatelessWidget {
+BmiModel bmiModel = BmiModel(
+  age: 0,
+  gender: Gender.ungender,
+  height: 0.0,
+  weight: 0.0,
+);
+
+class InputPage extends StatefulWidget {
   const InputPage({super.key});
 
   @override
+  State<InputPage> createState() => _InputPageState();
+}
+
+class _InputPageState extends State<InputPage> {
+  @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.inputAppBarTitle)),
@@ -22,23 +33,39 @@ class InputPage extends StatelessWidget {
           const SizedBox.shrink(),
           MultiChildInputWidget(
             leftSideWidget: InputCardWidget(
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 5,
-                children: [
-                  const Icon(Icons.male),
-                  Text(style: textTheme.titleMedium, 'Male'),
-                ],
+              cardColor: bmiModel.maleSelectioColor,
+              cardChild: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    bmiModel.gender = Gender.male;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 5,
+                  children: [
+                    const Icon(Icons.male),
+                    Text(style: textTheme.titleMedium, 'Male'),
+                  ],
+                ),
               ),
             ),
             rightSideWidget: InputCardWidget(
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 5,
-                children: [
-                  const Icon(Icons.female),
-                  Text(style: textTheme.titleMedium, 'Female'),
-                ],
+              cardColor: bmiModel.femaleSelectioColor,
+              cardChild: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    bmiModel.gender = Gender.female;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 5,
+                  children: [
+                    const Icon(Icons.female),
+                    Text(style: textTheme.titleMedium, 'Female'),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,18 +1,23 @@
+import 'package:bmi_calculator/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class InputCardWidget extends StatelessWidget {
-  const InputCardWidget({super.key, required this.cardChild});
+  const InputCardWidget({
+    super.key,
+    required this.cardChild,
+    this.cardColor = AppColors.materialThirdBlue,
+  });
   final Widget cardChild;
+  final Color cardColor;
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: cardChild,
+    return Container(
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(12),
       ),
+      child: cardChild,
     );
   }
 }

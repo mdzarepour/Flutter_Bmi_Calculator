@@ -14,13 +14,18 @@ class MultiChildInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final TextStyle? textTheme = Theme.of(context).textTheme.titleMedium;
     return Padding(
       padding: const EdgeInsetsGeometry.symmetric(horizontal: 21),
       child: SizedBox(
         height: size.height * 0.22,
         width: size.width,
-        child: Row(spacing: 15, children: [leftSideWidget, rightSideWidget]),
+        child: Row(
+          spacing: 15,
+          children: [
+            Expanded(child: leftSideWidget),
+            Expanded(child: rightSideWidget),
+          ],
+        ),
       ),
     );
   }
