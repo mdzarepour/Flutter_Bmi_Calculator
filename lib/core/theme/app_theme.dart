@@ -9,7 +9,33 @@ class AppTheme {
     colorScheme: _getColorScheme(),
     appBarTheme: _getAppbarTheme(),
     filledButtonTheme: _getFilledButtonTheme(),
+    iconTheme: _getIconTheme(),
+    sliderTheme: _getSliderTheme(),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        backgroundColor: AppColors.materialSecondBlue,
+      ),
+    ),
   );
+
+  static SliderThemeData _getSliderTheme() {
+    return const SliderThemeData(
+      activeTrackColor: AppColors.materialPink,
+      inactiveTrackColor: AppColors.materialWhite,
+      trackHeight: 4.0,
+      thumbColor: AppColors.materialPink,
+      overlayColor: AppColors.materialPink,
+      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
+      valueIndicatorColor: AppColors.materialPink,
+      valueIndicatorTextStyle: TextStyle(color: Colors.white, fontSize: 14),
+    );
+  }
+
+  static IconThemeData _getIconTheme() {
+    return const IconThemeData(size: 110, color: AppColors.materialWhite);
+  }
 
   static FilledButtonThemeData _getFilledButtonTheme() {
     return FilledButtonThemeData(
