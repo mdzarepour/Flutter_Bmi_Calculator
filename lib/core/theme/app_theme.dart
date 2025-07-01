@@ -11,25 +11,23 @@ class AppTheme {
     filledButtonTheme: _getFilledButtonTheme(),
     iconTheme: _getIconTheme(),
     sliderTheme: _getSliderTheme(),
-    iconButtonTheme: IconButtonThemeData(
+    iconButtonTheme: _getIconButtonTheme(),
+  );
+
+  static IconButtonThemeData _getIconButtonTheme() {
+    return IconButtonThemeData(
       style: IconButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         backgroundColor: AppColors.materialSecondBlue,
       ),
-    ),
-  );
+    );
+  }
 
   static SliderThemeData _getSliderTheme() {
     return const SliderThemeData(
-      activeTrackColor: AppColors.materialPink,
-      inactiveTrackColor: AppColors.materialWhite,
-      trackHeight: 4.0,
-      thumbColor: AppColors.materialPink,
-      overlayColor: AppColors.materialPink,
-      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-      overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
-      valueIndicatorColor: AppColors.materialPink,
-      valueIndicatorTextStyle: TextStyle(color: Colors.white, fontSize: 14),
+      // overlayColor: Colors.white,
+      thumbColor: Colors.white,
+      activeTrackColor: Colors.white,
     );
   }
 

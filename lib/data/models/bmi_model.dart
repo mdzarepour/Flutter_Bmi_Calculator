@@ -15,9 +15,6 @@ class BmiModel {
   double weight;
   int age;
 
-  // Gender get getSelectedGender {
-  //   return gender;
-  // }
   Color get femaleSelectioColor {
     if (gender == Gender.female) {
       return AppColors.materialSecondBlue;

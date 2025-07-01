@@ -10,7 +10,7 @@ class CalculateButton extends StatelessWidget {
       child: FilledButton(
         style: Theme.of(context).filledButtonTheme.style,
         onPressed: () {},
-        child: const Text(AppStrings.inpuCalculateButtonText),
+        child: const Text(AppStrings.inputCalculateButtonText),
       ),
     );
   }

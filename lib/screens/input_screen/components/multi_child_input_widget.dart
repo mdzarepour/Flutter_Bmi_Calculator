@@ -1,7 +1,5 @@
-import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
 import 'package:flutter/material.dart';
 
-//TODO get theme from texttheme -->
 class MultiChildInputWidget extends StatelessWidget {
   const MultiChildInputWidget({
     super.key,
