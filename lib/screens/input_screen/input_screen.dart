@@ -1,6 +1,4 @@
-import 'package:bmi_calculator/core/constants/app_colors.dart';
 import 'package:bmi_calculator/core/constants/app_strings.dart';
-import 'package:bmi_calculator/data/dummy_data/dummy_bmi.dart';
 import 'package:bmi_calculator/data/models/bmi_model.dart';
 import 'package:bmi_calculator/screens/input_screen/components/calculation_button.dart';
 import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
@@ -16,7 +14,18 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  double _heightValue = 0.0;
+  late BmiModel bmiModel;
+  @override
+  void initState() {
+    bmiModel = BmiModel(
+      age: 0,
+      gender: Gender.ungender,
+      height: 0,
+      weight: 0.0,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
@@ -27,9 +36,10 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox.shrink(),
+          // gender selection layer -->
           MultiChildInputWidget(
             leftSideWidget: InputCardWidget(
-              cardColor: bmiModel.maleSelectioColor,
+              cardColor: bmiModel.genderSelectionColor(Gender.male),
               cardChild: GestureDetector(
                 onTap: () => _genderSelection(Gender.male),
                 child: Column(
@@ -46,7 +56,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             rightSideWidget: InputCardWidget(
-              cardColor: bmiModel.femaleSelectioColor,
+              cardColor: bmiModel.genderSelectionColor(Gender.female),
               cardChild: GestureDetector(
                 onTap: () => _genderSelection(Gender.female),
                 child: Column(
@@ -63,16 +73,17 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
+          // height selection layer -->
           SingleChildInputWidget(
-            heightValue: _heightValue,
+            heightValue: bmiModel.height,
             slider: Slider(
               min: 0,
               max: 220,
-              value: _heightValue,
-              onChanged: (value) => setState(() => _heightValue = value),
-              onChangeEnd: (value) => bmiModel.height = value,
+              value: bmiModel.height,
+              onChanged: (value) => heightSelection(value),
             ),
           ),
+          // weight and age selection layer -->
           MultiChildInputWidget(
             leftSideWidget: InputCardWidget(
               cardChild: Column(
@@ -82,16 +93,19 @@ class _InputPageState extends State<InputPage> {
                     style: textTheme.titleMedium,
                     AppStrings.inputWeightLable,
                   ),
-                  Text(style: textTheme.displayLarge, '60'),
+                  Text(
+                    style: textTheme.displayLarge,
+                    bmiModel.weight.toString(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => weightSelection(ChangeType.increase),
                         icon: const Icon(size: 15, Icons.arrow_upward),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => weightSelection(ChangeType.decrease),
                         icon: const Icon(size: 15, Icons.arrow_downward),
                       ),
                     ],
@@ -104,16 +118,16 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(style: textTheme.titleMedium, AppStrings.inputAgeLable),
-                  Text(style: textTheme.displayLarge, '19'),
+                  Text(style: textTheme.displayLarge, bmiModel.age.toString()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => ageSelection(ChangeType.increase),
                         icon: const Icon(size: 15, Icons.arrow_upward),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => ageSelection(ChangeType.decrease),
                         icon: const Icon(size: 15, Icons.arrow_downward),
                       ),
                     ],
@@ -122,7 +136,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
-          const CalculateButton(),
+          CalculateButton(bmiModel: bmiModel),
         ],
       ),
     );
@@ -130,5 +144,17 @@ class _InputPageState extends State<InputPage> {
 
   void _genderSelection(Gender gender) {
     setState(() => bmiModel.gender = gender);
+  }
+
+  void heightSelection(double value) {
+    setState(() => bmiModel.changeHeight(value));
+  }
+
+  void weightSelection(ChangeType type) {
+    setState(() => bmiModel.updateWeight(type));
+  }
+
+  void ageSelection(ChangeType type) {
+    setState(() => bmiModel.updateAge(type));
   }
 }

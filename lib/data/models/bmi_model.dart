@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 enum Gender { male, female, ungender }
 
+enum ChangeType { increase, decrease }
+
 class BmiModel {
   BmiModel({
     required this.age,
@@ -15,19 +17,21 @@ class BmiModel {
   double weight;
   int age;
 
-  Color get femaleSelectioColor {
-    if (gender == Gender.female) {
-      return AppColors.materialSecondBlue;
-    } else {
-      return AppColors.materialThirdBlue;
-    }
+  Color genderSelectionColor(Gender selectedGender) {
+    return gender == selectedGender
+        ? AppColors.materialSecondBlue
+        : AppColors.materialThirdBlue;
   }
 
-  Color get maleSelectioColor {
-    if (gender == Gender.male) {
-      return AppColors.materialSecondBlue;
-    } else {
-      return AppColors.materialThirdBlue;
-    }
+  void changeHeight(double value) => height = value;
+
+  void updateWeight(ChangeType type) {
+    if (type == ChangeType.increase) weight += 0.5;
+    if (type == ChangeType.decrease) if (weight > 0) weight -= 0.5;
+  }
+
+  void updateAge(ChangeType type) {
+    if (type == ChangeType.increase) age += 1;
+    if (type == ChangeType.decrease) if (age > 0) age -= 1;
   }
 }
