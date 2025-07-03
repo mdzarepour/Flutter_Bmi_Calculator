@@ -1,16 +1,37 @@
-# bmi_calculator
+# BMI Calculator
 
-A new Flutter project.
+Bmi Calculator is a little flutter app without state management package ,<br>
+just for practice oop concepst and user interactivity features of flutter
+<br>
+<br>
 
-## Getting Started
+<p align="center">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://github.com/user-attachments/assets/f487c373-a201-4c64-b26d-e3f733f2aecb" width="200" alt="" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/user-attachments/assets/5e81a0e8-48ec-4e8d-8c3d-bc103a1ef568" width="200" alt="" />
+
+
+<img src="https://github.com/user-attachments/assets/2ab7a6b2-04b9-484e-97ec-a95db9f0e26a" width="200" alt="" />
+
+
+
+</p>
+
+
+## how to test ?
+
+add remote or download source then :
+
+
+```bash
+flutter pub get
+```
+```bash
+flutter pub upgrade
+```
+```bash
+flutter run
+```
