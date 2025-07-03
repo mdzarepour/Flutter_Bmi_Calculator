@@ -23,7 +23,7 @@ class BmiModel {
         : AppColors.materialThirdBlue;
   }
 
-  void changeHeight(double value) => height = value;
+  void changeHeight(double value) => height = value.ceilToDouble();
 
   void updateWeight(ChangeType type) {
     if (type == ChangeType.increase) weight += 0.5;

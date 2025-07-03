@@ -7,4 +7,5 @@ class AppStrings {
   static const String inputHeightLable = 'Height';
   static const String inputWeightLable = 'Weight';
   static const String inputAgeLable = 'Age';
+  static const String resultTitle = 'Your Result';
 }

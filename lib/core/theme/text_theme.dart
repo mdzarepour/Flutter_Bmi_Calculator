@@ -27,7 +27,7 @@ class AppTextTheme {
     // reualt screen message theme -->
     displaySmall: GoogleFonts.inter(
       color: AppColors.materialGrey,
-      fontSize: 16,
+      fontSize: 35,
       fontWeight: FontWeight.w300,
     ),
     // pink button text theme -->

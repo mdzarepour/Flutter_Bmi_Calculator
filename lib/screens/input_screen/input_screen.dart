@@ -18,10 +18,10 @@ class _InputPageState extends State<InputPage> {
   @override
   void initState() {
     bmiModel = BmiModel(
-      age: 0,
+      age: 25,
       gender: Gender.ungender,
       height: 0,
-      weight: 0.0,
+      weight: 55,
     );
     super.initState();
   }
