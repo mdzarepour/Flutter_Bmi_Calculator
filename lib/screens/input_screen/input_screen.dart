@@ -1,7 +1,7 @@
 import 'package:bmi_calculator/core/constants/app_strings.dart';
 import 'package:bmi_calculator/models/bmi_model.dart';
 import 'package:bmi_calculator/screens/input_screen/components/calculation_button.dart';
-import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
+import 'package:bmi_calculator/core/widgets/card_widget.dart';
 import 'package:bmi_calculator/screens/input_screen/components/multi_child_input_widget.dart';
 import 'package:bmi_calculator/screens/input_screen/components/single_childe_input_widget.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class _InputPageState extends State<InputPage> {
           const SizedBox.shrink(),
           // gender selection layer -->
           MultiChildInputWidget(
-            leftSideWidget: InputCardWidget(
+            leftSideWidget: CardWidget(
               cardColor: bmiModel.genderSelectionColor(Gender.male),
               cardChild: GestureDetector(
                 onTap: () => _genderSelection(Gender.male),
@@ -55,7 +55,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
             ),
-            rightSideWidget: InputCardWidget(
+            rightSideWidget: CardWidget(
               cardColor: bmiModel.genderSelectionColor(Gender.female),
               cardChild: GestureDetector(
                 onTap: () => _genderSelection(Gender.female),
@@ -85,7 +85,7 @@ class _InputPageState extends State<InputPage> {
           ),
           // weight and age selection layer -->
           MultiChildInputWidget(
-            leftSideWidget: InputCardWidget(
+            leftSideWidget: CardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -113,7 +113,7 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            rightSideWidget: InputCardWidget(
+            rightSideWidget: CardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

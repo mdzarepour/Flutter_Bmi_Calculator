@@ -1,6 +1,6 @@
 import 'package:bmi_calculator/core/constants/app_strings.dart';
 import 'package:bmi_calculator/models/bmi_model.dart';
-import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
+import 'package:bmi_calculator/core/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResualtScreen extends StatefulWidget {
@@ -13,7 +13,9 @@ class ResualtScreen extends StatefulWidget {
 
 class _ResualtScreenState extends State<ResualtScreen> {
   late final Map<String, dynamic> bmiMap;
-  String conditionMessage = 'unKnown';
+  String conditionMessage = AppStrings.resultDefaultMessage;
+  late double _calculatedBmi;
+
   @override
   void initState() {
     bmiMap = {
@@ -22,6 +24,8 @@ class _ResualtScreenState extends State<ResualtScreen> {
       'weight': widget.bmiModel.weight,
       'age': widget.bmiModel.age,
     };
+    _calculatedBmi = _calculateBmiValue();
+    conditionMessage = _getConditionMessage(_calculatedBmi);
     super.initState();
   }
 
@@ -29,14 +33,13 @@ class _ResualtScreenState extends State<ResualtScreen> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.inputAppBarTitle)),
       body: Center(
         child: SizedBox(
           width: size.width * 0.8,
           height: size.height * 0.7,
-          child: InputCardWidget(
+          child: CardWidget(
             cardChild: ListView(
               children: [
                 const SizedBox(height: 50),
@@ -58,7 +61,7 @@ class _ResualtScreenState extends State<ResualtScreen> {
                 Text(
                   textAlign: TextAlign.center,
                   style: theme.textTheme.displayLarge,
-                  _calculateBmi(),
+                  _calculatedBmi.toStringAsFixed(2),
                 ),
                 const SizedBox(height: 15),
                 Text(
@@ -74,39 +77,16 @@ class _ResualtScreenState extends State<ResualtScreen> {
     );
   }
 
-  String _calculateBmi() {
-    double height = bmiMap['height'] / 100;
-    double weight = bmiMap['weight'];
-    double bmi = weight / (height * height);
-    switch (bmi) {
-      case < 15:
-        conditionMessage = 'Very severely underweight';
-        break;
-      case > 15 && < 16:
-        conditionMessage = '	Severely underweight';
-        break;
-      case > 16 && < 18.5:
-        conditionMessage = 'Underweight';
-        break;
-      case > 18.5 && < 25:
-        conditionMessage = 'Normal (healthy weight)';
-        break;
-      case > 25 && < 30:
-        conditionMessage = 'Overweight';
-        break;
-      case > 30 && < 35:
-        conditionMessage = 'Moderately obese';
-        break;
-      case > 35 && 40:
-        conditionMessage = 'Severely obese';
-        break;
-      case > 40:
-        conditionMessage = 'Very severely obese';
-        break;
-      default:
-        conditionMessage = 'please recheack statics sgain';
-    }
-    return bmi.toStringAsFixed(2);
+  double _calculateBmiValue() {
+    double height = bmiMap['height']! / 100;
+    double weight = bmiMap['weight']!;
+    return weight / (height * height);
+  }
+
+  String _getConditionMessage(double bmi) {
+    if (bmi < 18.5) return AppStrings.resultFirstCategory;
+    if (bmi < 25) return AppStrings.resultSecondCategory;
+    if (bmi < 30) return AppStrings.resultThirdCategory;
+    return AppStrings.resultFourthCategory;
   }
 }
-//TODO refactor imports -->

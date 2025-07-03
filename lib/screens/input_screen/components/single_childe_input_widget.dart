@@ -1,5 +1,5 @@
 import 'package:bmi_calculator/core/constants/app_colors.dart';
-import 'package:bmi_calculator/screens/input_screen/components/card_widget.dart';
+import 'package:bmi_calculator/core/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
 class SingleChildInputWidget extends StatelessWidget {
@@ -21,7 +21,7 @@ class SingleChildInputWidget extends StatelessWidget {
       child: SizedBox(
         height: size.height * 0.22,
         width: size.width,
-        child: InputCardWidget(
+        child: CardWidget(
           cardChild: Column(
             spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,

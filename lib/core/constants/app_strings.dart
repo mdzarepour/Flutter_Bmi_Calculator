@@ -8,4 +8,9 @@ class AppStrings {
   static const String inputWeightLable = 'Weight';
   static const String inputAgeLable = 'Age';
   static const String resultTitle = 'Your Result';
+  static const String resultDefaultMessage = 'please check statics again';
+  static const String resultFirstCategory = 'Underweight';
+  static const String resultSecondCategory = 'Normal (healthy weight)';
+  static const String resultThirdCategory = 'Overweight';
+  static const String resultFourthCategory = 'Obese';
 }

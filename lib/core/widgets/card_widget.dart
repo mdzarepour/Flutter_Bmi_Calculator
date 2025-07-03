@@ -1,8 +1,8 @@
 import 'package:bmi_calculator/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class InputCardWidget extends StatelessWidget {
-  const InputCardWidget({
+class CardWidget extends StatelessWidget {
+  const CardWidget({
     super.key,
     required this.cardChild,
     this.cardColor = AppColors.materialThirdBlue,
