@@ -41,13 +41,11 @@ class BmiModel {
   }
 
   String getConditionTitle() {
-    var s;
     if (bmi >= 25)
-      s = AppStrings.resultThirdCategory;
+      return AppStrings.resultThirdCategory;
     else if (bmi > 18.5)
       return AppStrings.resultSecondCategory;
     else
       return AppStrings.resultFirstCategory;
-    return s;
   }
 }
