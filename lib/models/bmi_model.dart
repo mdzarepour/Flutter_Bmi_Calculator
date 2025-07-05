@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:bmi_calculator/core/imports/import_core.dart';
+
 enum Gender { male, female, ungender }
 
 enum ChangeType { increase, decrease }
@@ -39,13 +41,13 @@ class BmiModel {
   }
 
   String getConditionTitle() {
-    switch (bmi) {
-      case >= 25:
-        return "Overweight";
-      case > 18.5:
-        return "Normal";
-      default:
-        return "Underweight";
-    }
+    var s;
+    if (bmi >= 25)
+      s = AppStrings.resultThirdCategory;
+    else if (bmi > 18.5)
+      return AppStrings.resultSecondCategory;
+    else
+      return AppStrings.resultFirstCategory;
+    return s;
   }
 }

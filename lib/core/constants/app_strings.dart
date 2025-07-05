@@ -12,5 +12,4 @@ class AppStrings {
   static const String resultFirstCategory = 'Underweight';
   static const String resultSecondCategory = 'Normal (healthy weight)';
   static const String resultThirdCategory = 'Overweight';
-  static const String resultFourthCategory = 'Obese';
 }
