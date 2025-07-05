@@ -1,5 +1,4 @@
-import 'package:bmi_calculator/core/constants/app_colors.dart';
-import 'package:flutter/material.dart';
+import 'dart:math';
 
 enum Gender { male, female, ungender }
 
@@ -16,14 +15,13 @@ class BmiModel {
   double height;
   double weight;
   int age;
+  late double bmi;
 
-  Color genderSelectionColor(Gender selectedGender) {
-    return gender == selectedGender
-        ? AppColors.materialSecondBlue
-        : AppColors.materialThirdBlue;
-  }
+  //add message condition
 
-  void changeHeight(double value) => height = value.ceilToDouble();
+  void updateGender(Gender selectedGender) => gender = selectedGender;
+
+  void updateHeight(double value) => height = value.ceilToDouble();
 
   void updateWeight(ChangeType type) {
     if (type == ChangeType.increase) weight += 0.5;
@@ -33,5 +31,21 @@ class BmiModel {
   void updateAge(ChangeType type) {
     if (type == ChangeType.increase) age += 1;
     if (type == ChangeType.decrease) if (age > 0) age -= 1;
+  }
+
+  String getCalculatedBmi() {
+    bmi = weight / pow(height / 100, 2);
+    return bmi.toStringAsFixed(2);
+  }
+
+  String getConditionTitle() {
+    switch (bmi) {
+      case >= 25:
+        return "Overweight";
+      case > 18.5:
+        return "Normal";
+      default:
+        return "Underweight";
+    }
   }
 }

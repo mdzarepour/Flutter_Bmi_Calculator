@@ -17,18 +17,14 @@ class _InputPageState extends State<InputPage> {
   late BmiModel bmiModel;
   @override
   void initState() {
-    bmiModel = BmiModel(
-      age: 25,
-      gender: Gender.ungender,
-      height: 0,
-      weight: 55,
-    );
+    bmiModel = BmiModel(age: 0, gender: Gender.ungender, height: 0, weight: 0);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.inputAppBarTitle)),
       body: Column(
@@ -36,15 +32,16 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox.shrink(),
-          // gender selection layer -->
           MultiChildInputWidget(
+            // male card -->
             leftSideWidget: CardWidget(
-              cardColor: bmiModel.genderSelectionColor(Gender.male),
+              cardColor: bmiModel.gender == Gender.male
+                  ? colorScheme.primary
+                  : colorScheme.secondary,
               cardChild: GestureDetector(
-                onTap: () => _genderSelection(Gender.male),
+                onTap: () => genderUpdate(Gender.male),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 5,
                   children: [
                     const Icon(Icons.male),
                     Text(
@@ -55,13 +52,15 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
             ),
+            // female card -->
             rightSideWidget: CardWidget(
-              cardColor: bmiModel.genderSelectionColor(Gender.female),
+              cardColor: bmiModel.gender == Gender.female
+                  ? colorScheme.primary
+                  : colorScheme.secondary,
               cardChild: GestureDetector(
-                onTap: () => _genderSelection(Gender.female),
+                onTap: () => genderUpdate(Gender.female),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 5,
                   children: [
                     const Icon(Icons.female),
                     Text(
@@ -73,18 +72,18 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
-          // height selection layer -->
+          // height card -->
           SingleChildInputWidget(
             heightValue: bmiModel.height,
             slider: Slider(
               min: 0,
-              max: 220,
+              max: 200,
               value: bmiModel.height,
-              onChanged: (value) => heightSelection(value),
+              onChanged: (value) => heightUpdate(value),
             ),
           ),
-          // weight and age selection layer -->
           MultiChildInputWidget(
+            // weight card -->
             leftSideWidget: CardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -101,11 +100,11 @@ class _InputPageState extends State<InputPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () => weightSelection(ChangeType.increase),
+                        onPressed: () => weightUpdate(ChangeType.increase),
                         icon: const Icon(size: 15, Icons.arrow_upward),
                       ),
                       IconButton(
-                        onPressed: () => weightSelection(ChangeType.decrease),
+                        onPressed: () => weightUpdate(ChangeType.decrease),
                         icon: const Icon(size: 15, Icons.arrow_downward),
                       ),
                     ],
@@ -113,6 +112,7 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
+            // age card -->
             rightSideWidget: CardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -123,11 +123,11 @@ class _InputPageState extends State<InputPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () => ageSelection(ChangeType.increase),
+                        onPressed: () => ageUpdate(ChangeType.increase),
                         icon: const Icon(size: 15, Icons.arrow_upward),
                       ),
                       IconButton(
-                        onPressed: () => ageSelection(ChangeType.decrease),
+                        onPressed: () => ageUpdate(ChangeType.decrease),
                         icon: const Icon(size: 15, Icons.arrow_downward),
                       ),
                     ],
@@ -142,19 +142,19 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  void _genderSelection(Gender gender) {
-    setState(() => bmiModel.gender = gender);
+  void genderUpdate(Gender gender) {
+    setState(() => bmiModel.updateGender(gender));
   }
 
-  void heightSelection(double value) {
-    setState(() => bmiModel.changeHeight(value));
+  void heightUpdate(double height) {
+    setState(() => bmiModel.updateHeight(height));
   }
 
-  void weightSelection(ChangeType type) {
-    setState(() => bmiModel.updateWeight(type));
+  void weightUpdate(ChangeType changeType) {
+    setState(() => bmiModel.updateWeight(changeType));
   }
 
-  void ageSelection(ChangeType type) {
-    setState(() => bmiModel.updateAge(type));
+  void ageUpdate(ChangeType changeType) {
+    setState(() => bmiModel.updateAge(changeType));
   }
 }
