@@ -1,6 +1,4 @@
-import 'package:bmi_calculator/core/constants/app_colors.dart';
-import 'package:bmi_calculator/core/widgets/card_widget.dart';
-import 'package:flutter/material.dart';
+import '../../../core/imports/import_core.dart';
 
 class SingleChildInputWidget extends StatelessWidget {
   const SingleChildInputWidget({

@@ -1,7 +1,5 @@
-import 'package:bmi_calculator/core/constants/app_strings.dart';
-import 'package:bmi_calculator/models/bmi_model.dart';
-import 'package:bmi_calculator/core/widgets/card_widget.dart';
-import 'package:flutter/material.dart';
+import '../../core/imports/import_core.dart';
+import '../../models/bmi_model.dart';
 
 class ResualtScreen extends StatelessWidget {
   const ResualtScreen({super.key, required this.bmiModel});

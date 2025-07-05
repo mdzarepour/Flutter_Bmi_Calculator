@@ -1,6 +1,5 @@
-import 'package:bmi_calculator/core/theme/app_theme.dart';
-import 'package:bmi_calculator/screens/input_screen/input_screen.dart';
-import 'package:flutter/material.dart';
+import 'core/imports/import_core.dart';
+import 'screens/input_screen/input_screen.dart';
 
 void main(List<String> args) => runApp(const BmiCalculator());
 
@@ -12,7 +11,7 @@ class BmiCalculator extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
-      home: const InputPage(),
+      home: const InputScreen(),
     );
   }
 }

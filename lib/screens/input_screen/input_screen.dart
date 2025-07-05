@@ -1,19 +1,15 @@
-import 'package:bmi_calculator/core/constants/app_strings.dart';
-import 'package:bmi_calculator/models/bmi_model.dart';
-import 'package:bmi_calculator/screens/input_screen/components/calculation_button.dart';
-import 'package:bmi_calculator/core/widgets/card_widget.dart';
-import 'package:bmi_calculator/screens/input_screen/components/multi_child_input_widget.dart';
-import 'package:bmi_calculator/screens/input_screen/components/single_childe_input_widget.dart';
-import 'package:flutter/material.dart';
+import '../../core/imports/import_core.dart';
+import '../../models/bmi_model.dart';
+import '../../core/imports/import_input_screen.dart';
 
-class InputPage extends StatefulWidget {
-  const InputPage({super.key});
+class InputScreen extends StatefulWidget {
+  const InputScreen({super.key});
 
   @override
-  State<InputPage> createState() => _InputPageState();
+  State<InputScreen> createState() => _InputPageState();
 }
 
-class _InputPageState extends State<InputPage> {
+class _InputPageState extends State<InputScreen> {
   late BmiModel bmiModel;
   @override
   void initState() {

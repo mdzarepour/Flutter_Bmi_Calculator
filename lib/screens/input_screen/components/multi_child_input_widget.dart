@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../../core/imports/import_core.dart';
 
 class MultiChildInputWidget extends StatelessWidget {
   const MultiChildInputWidget({
