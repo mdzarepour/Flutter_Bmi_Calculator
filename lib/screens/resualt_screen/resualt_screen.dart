@@ -15,7 +15,7 @@ class ResualtScreen extends StatelessWidget {
         child: SizedBox(
           width: size.width * 0.8,
           height: size.height * 0.7,
-          child: CardWidget(
+          child: GlobalCardWidget(
             cardChild: Column(
               spacing: 20,
               mainAxisAlignment: MainAxisAlignment.center,

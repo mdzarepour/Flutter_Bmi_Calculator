@@ -1,7 +1,7 @@
 import '../../../core/imports/import_core.dart';
 
-class MultiChildInputWidget extends StatelessWidget {
-  const MultiChildInputWidget({
+class InputScreenTwinInputWidget extends StatelessWidget {
+  const InputScreenTwinInputWidget({
     super.key,
     required this.leftSideWidget,
     required this.rightSideWidget,

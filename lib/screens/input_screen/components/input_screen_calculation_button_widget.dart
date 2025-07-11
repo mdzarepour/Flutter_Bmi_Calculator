@@ -2,8 +2,8 @@ import '../../../core/imports/import_core.dart';
 import '../../../models/bmi_model.dart';
 import '../../resualt_screen/resualt_screen.dart';
 
-class CalculateButton extends StatelessWidget {
-  const CalculateButton({super.key, required this.bmiModel});
+class InputScreenCalculationButtonWidget extends StatelessWidget {
+  const InputScreenCalculationButtonWidget({super.key, required this.bmiModel});
   final BmiModel bmiModel;
 
   @override

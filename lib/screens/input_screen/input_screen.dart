@@ -28,9 +28,9 @@ class _InputPageState extends State<InputScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox.shrink(),
-          MultiChildInputWidget(
+          InputScreenTwinInputWidget(
             // male card -->
-            leftSideWidget: CardWidget(
+            leftSideWidget: GlobalCardWidget(
               cardColor: bmiModel.gender == Gender.male
                   ? colorScheme.primary
                   : colorScheme.secondary,
@@ -49,7 +49,7 @@ class _InputPageState extends State<InputScreen> {
               ),
             ),
             // female card -->
-            rightSideWidget: CardWidget(
+            rightSideWidget: GlobalCardWidget(
               cardColor: bmiModel.gender == Gender.female
                   ? colorScheme.primary
                   : colorScheme.secondary,
@@ -69,7 +69,7 @@ class _InputPageState extends State<InputScreen> {
             ),
           ),
           // height card -->
-          SingleChildInputWidget(
+          InputScreenHeightInputWidget(
             heightValue: bmiModel.height,
             slider: Slider(
               min: 0,
@@ -78,9 +78,9 @@ class _InputPageState extends State<InputScreen> {
               onChanged: (value) => heightUpdate(value),
             ),
           ),
-          MultiChildInputWidget(
+          InputScreenTwinInputWidget(
             // weight card -->
-            leftSideWidget: CardWidget(
+            leftSideWidget: GlobalCardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -109,7 +109,7 @@ class _InputPageState extends State<InputScreen> {
               ),
             ),
             // age card -->
-            rightSideWidget: CardWidget(
+            rightSideWidget: GlobalCardWidget(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -132,7 +132,7 @@ class _InputPageState extends State<InputScreen> {
               ),
             ),
           ),
-          CalculateButton(bmiModel: bmiModel),
+          InputScreenCalculationButtonWidget(bmiModel: bmiModel),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import '../../../core/imports/import_core.dart';
 
-class SingleChildInputWidget extends StatelessWidget {
-  const SingleChildInputWidget({
+class InputScreenHeightInputWidget extends StatelessWidget {
+  const InputScreenHeightInputWidget({
     super.key,
     required this.heightValue,
     required this.slider,
@@ -19,7 +19,7 @@ class SingleChildInputWidget extends StatelessWidget {
       child: SizedBox(
         height: size.height * 0.22,
         width: size.width,
-        child: CardWidget(
+        child: GlobalCardWidget(
           cardChild: Column(
             spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,

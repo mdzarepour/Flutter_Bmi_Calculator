@@ -19,8 +19,6 @@ class BmiModel {
   int age;
   late double bmi;
 
-  //add message condition
-
   void updateGender(Gender selectedGender) => gender = selectedGender;
 
   void updateHeight(double value) => height = value.ceilToDouble();
@@ -41,11 +39,12 @@ class BmiModel {
   }
 
   String getConditionTitle() {
-    if (bmi >= 25)
+    if (bmi >= 25) {
       return AppStrings.resultThirdCategory;
-    else if (bmi > 18.5)
+    } else if (bmi > 18.5) {
       return AppStrings.resultSecondCategory;
-    else
+    } else {
       return AppStrings.resultFirstCategory;
+    }
   }
 }
