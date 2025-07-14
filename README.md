@@ -5,7 +5,7 @@ just for practice oop concepst and user interactivity features of flutter
 <br>
 <br>
 
-<p align="center">
+<p align="left">
 
 
 <img src="https://github.com/user-attachments/assets/f487c373-a201-4c64-b26d-e3f733f2aecb" width="200" alt="" />
